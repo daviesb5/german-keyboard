@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOM manipulations</title>
+        <script type="text/javascript">
+        /*DOM manipulations & getelementbyID method*/
+        function fn1()
+        {
+            var str = document.getElementById("text1").value;
+            alert("Value inside the text box is: " +str);
+        }
+        //buttonClick();
+        </script>
+    </head>
+    <body>
+        <input type="text" id="text1" placeholder="username">
+        <br><br>
+        <input type="password" id="text2" placeholder="password">
+        <button onclick="fn1()" id = "btn1">Click me</button>
+    </body>
+</html>
