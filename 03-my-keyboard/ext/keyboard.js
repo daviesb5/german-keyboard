@@ -4,14 +4,28 @@
 SPECIAL CHARACTERS
 */
 //checks for special characters
-window.addEventListener("keydown", checkKeyPress, false);
+window.addEventListener("keyup", checkKeyPress, false);
+var textareaInput;
 
 function checkKeyPress(key) {
-    alert("You pressed a key!");
+    /*
+    alert("typeTextbox length: " + textareaInput.value.length);
+    var textareaInput = document.querySelector("typingTextbox");
+    var textareaInput = document.getElementById("typingTextbox").value;
+    alert(textareaInput);
+    document.getElementById("typingTextbox").value = "Ha ha, I messed you up!";
+    */
     //conversion
     if (key.keyCode == "65") {
         alert("The 'a' letter key has been pressed!");
     }
+    textareaInput = document.getElementById("typingTextbox").value;
+    charConversion(textareaInput);
+    document.getElementById("comboBox").value = textareaInput;
+}
+
+function charConversion(currentInput) {
+    alert(currentInput);
 }
 
 /*
