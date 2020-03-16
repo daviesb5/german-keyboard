@@ -12,20 +12,21 @@ var requiredComboLength = 0;
 var asciiArray = [186, 83, 54, 222, 192, 189, 187];
 
 function checkKeyPress(key) {
-    //grabs string in textbox
     textareaInput = document.getElementById("typingTextbox").value;
+    document.getElementById("comboBox").value = textareaInput;
 
     //checks that required length fits in text length
     requiredComboLength = findComboLength(key.keyCode);
+    //alert("requiredComboLength: " + requiredComboLength);
+    if (textareaInput.length >= requiredComboLength){
+        // Determines if current key is a special character
+        keyBoolean = asciiArray.includes(key.keyCode, textareaInput);
 
-    // Determines if current key is a special character
-    keyBoolean = asciiArray.includes(key.keyCode, textareaInput);
-
-    // compares text length vs required combo length
-    if (textareaInput.length >= requiredComboLength && keyBoolean){
         // looks for special characters
         if (keyBoolean == true){
             charConversion(textareaInput, requiredComboLength);
+        } else {
+            alert("nothing here");
         }
     } else {
         return;
@@ -42,14 +43,11 @@ function findComboLength(currentKeyCode){
 }
 
 function charConversion(currentInput, requiredLength) {
-    //displays combo box
-    document.getElementById("comboBox").value = currentInput;
-    //determines whether we convert characters or not
+    alert(currentInput);
     if (currentInput.length >= 2){
         alert("Convert Character");
     } else {
-        //alert("Too short");
-        return;
+        alert("Too short");
     }
 }
 
