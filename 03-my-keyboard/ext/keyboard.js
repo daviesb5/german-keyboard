@@ -6,26 +6,36 @@ SPECIAL CHARACTERS
 //checks for special characters
 window.addEventListener("keyup", checkKeyPress, false);
 var textareaInput;
+var keyBoolean = false;
 
 function checkKeyPress(key) {
-    /*
-    alert("typeTextbox length: " + textareaInput.value.length);
-    var textareaInput = document.querySelector("typingTextbox");
-    var textareaInput = document.getElementById("typingTextbox").value;
-    alert(textareaInput);
-    document.getElementById("typingTextbox").value = "Ha ha, I messed you up!";
-    */
-    //conversion
-    if (key.keyCode == "65") {
-        alert("The 'a' letter key has been pressed!");
-    }
     textareaInput = document.getElementById("typingTextbox").value;
-    charConversion(textareaInput);
     document.getElementById("comboBox").value = textareaInput;
+    
+    //Special Characters [":", "s", "^", "'", "`", "-", "="];
+    var asciiArray = [186, 83, 54, 222, 192, 189, 187];
+    alert("key.keyCode: " + key.keyCode);
+
+    // var keyBoolean;
+    keyBoolean = asciiArray.includes(key.keyCode);
+    alert("keyBoolean: " + keyBoolean);
+
+    // looks for special characters
+    if (keyBoolean == true){
+        alert("we found it");
+    } else {
+        //alert("nothing here");
+    }
+    //charConversion(textareaInput);
 }
 
 function charConversion(currentInput) {
-    alert(currentInput);
+    // alert(currentInput);
+    if (currentInput.length >= 2){
+        
+    } else {
+        alert("Too short");
+    }
 }
 
 /*
