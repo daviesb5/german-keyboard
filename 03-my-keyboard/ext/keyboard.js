@@ -30,8 +30,10 @@ function checkKeyPress() {
 function charConversion(currentInput, finalChar) {
     alert("currentInput: " + currentInput);
     // prevents entry "s"
-    if (currentInput == "s"){
-        return;
+    if (finalChar == "s"){
+        if (currentInput !== "s=" && currentInput !== "s+s"){
+            return;
+        }
     }
     // either 2 or 3 characters
     var specialChar;
@@ -45,12 +47,14 @@ function charConversion(currentInput, finalChar) {
         alert("Too short");
     }
     // determines and returns special character
-    specialChar = convertToSpecialChar(currentInput, finalChar, sliceLength);
+    specialChar = convertToSpecialChar(currentInput, sliceLength);
     // puts special character in comboBox textarea
     document.getElementById("comboBox").value = specialChar;
+    // converts char combo to new special character
+    addNewSpecialChar(specialChar, finalChar, sliceLength);
 }
 
-function convertToSpecialChar(inputText, lastLetter, textSlice) {
+function convertToSpecialChar(inputText, textSlice) {
     // slices the last 2-3 characters from textbox
     var comboSet = inputText.slice(-textSlice);
     alert("comboSet: " + comboSet);
@@ -94,9 +98,26 @@ function convertToSpecialChar(inputText, lastLetter, textSlice) {
         if (firstRow == true){
             alert("newSpecialChar: " + newSpecialChar);
             break;
+        } else {
+            newSpecialChar = "";
         }
     }
-    return newSpecialChar;
+    // based on results
+    if (newSpecialChar !== ""){
+        return newSpecialChar;
+    } else {
+        return "";
+    }
+}
+
+function addNewSpecialChar(specialChar, finalChar, sliceLength){
+    /*
+    textareaInput = textareaInput + specialChar;
+    textareaInput = document.getElementById("typingTextbox").value;
+    */
+   //updates textbox
+   textareaInput = textareaInput.substring(0, textareaInput.length - sliceLength);
+   document.getElementById("typingTextbox").value = textareaInput + specialChar;
 }
 
 /*
