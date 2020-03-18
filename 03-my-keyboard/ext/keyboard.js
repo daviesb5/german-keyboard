@@ -19,31 +19,34 @@ function checkKeyPress() {
     // Determines if current key is a special character
     var lastChar = textareaInput.charAt(textareaInput.length - 1);
     keyBoolean = specialCharArray.includes(lastChar, textareaInput);
-
-    //alert("requiredComboLength: " + requiredComboLength);
+    // pursues conversion if appropriate
     if (keyBoolean == true) {
         charConversion(textareaInput, lastChar);
     } else {
-        // alert("nothing here");
         return;
     }
 }
 
 function charConversion(currentInput, finalChar) {
-    alert(currentInput);
-    var specialChar;
+    alert("currentInput: " + currentInput);
+    // prevents entry "s"
+    if (currentInput == "s"){
+        return;
+    }
     // either 2 or 3 characters
+    var specialChar;
     var sliceLength;
+    // filters out irrelevant character combos
     if (finalChar == "=" && currentInput.length >= 2) {
-        //alert("Convert Character");
         sliceLength = 2;
     } else if (finalChar !== "=" && currentInput.length >= 3) {
-        //alert("Convert Character");
         sliceLength = 3;
     } else {
         alert("Too short");
     }
+    // determines and returns special character
     specialChar = convertToSpecialChar(currentInput, finalChar, sliceLength);
+    // puts special character in comboBox textarea
     document.getElementById("comboBox").value = specialChar;
 }
 
@@ -83,11 +86,11 @@ function convertToSpecialChar(inputText, lastLetter, textSlice) {
     // keyBoolean = specialCharArray.includes(lastChar, textareaInput);
     var firstRow;
     var newSpecialChar;
-    // specialCharArray[1][0].includes(lastLetter);
+    // specialCharArray[i][0].includes(comboSet);
     for (i = 0; i < specialCharArray.length; i++){
-        firstRow = specialCharArray[i][0].includes(lastLetter);
+        firstRow = specialCharArray[i][0].includes(comboSet);
         newSpecialChar = specialCharArray[i][1];
-        alert("firstRow: " + firstRow);
+        //alert("firstRow: " + firstRow);
         if (firstRow == true){
             alert("newSpecialChar: " + newSpecialChar);
             break;
