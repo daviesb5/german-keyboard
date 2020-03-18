@@ -9,42 +9,48 @@ var textareaInput;
 var keyBoolean = false;
 var requiredComboLength = 0;
 //Special Characters [":", "s", "^", "'", "`", "-", "="];
+var specialCharArray = [":", "s", "^", "'", "`", "-", "="];
 var asciiArray = [186, 83, 54, 222, 192, 189, 187];
 
-function checkKeyPress(key) {
+function checkKeyPress() {
     textareaInput = document.getElementById("typingTextbox").value;
     document.getElementById("comboBox").value = textareaInput;
 
-    //checks that required length fits in text length
-    requiredComboLength = findComboLength(key.keyCode);
-    //alert("requiredComboLength: " + requiredComboLength);
-    if (textareaInput.length >= requiredComboLength){
-        // Determines if current key is a special character
-        keyBoolean = asciiArray.includes(key.keyCode, textareaInput);
+    // Determines if current key is a special character
+    var lastChar = textareaInput.charAt(textareaInput.length - 1);
+    keyBoolean = specialCharArray.includes(lastChar, textareaInput);
 
-        // looks for special characters
-        if (keyBoolean == true){
-            charConversion(textareaInput, requiredComboLength);
-        } else {
-            alert("nothing here");
-        }
+    //checks that required length fits in text length
+    /*
+    requiredComboLength = findComboLength(lastChar);
+    */
+
+    //alert("requiredComboLength: " + requiredComboLength);
+    if (keyBoolean == true) {
+        charConversion(textareaInput, lastChar);
     } else {
+        // alert("nothing here");
         return;
     }
 }
 
-function findComboLength(currentKeyCode){
+/*
+function findComboLength(currentChar) {
+    // alert("currentChar: " + currentChar);
     // determines required length
-    if (currentKeyCode == 187){
+    if (currentChar == "=") {
         return 2;
     } else {
         return 3;
     }
 }
+*/
 
-function charConversion(currentInput, requiredLength) {
+function charConversion(currentInput, finalChar) {
     alert(currentInput);
-    if (currentInput.length >= 2){
+    if (finalChar == "=" && currentInput.length >= 2) {
+        alert("Convert Character");
+    } else if (finalChar !== "=" && currentInput.length >= 3) {
         alert("Convert Character");
     } else {
         alert("Too short");
