@@ -30,16 +30,14 @@ function checkKeyPress() {
 function charConversion(currentInput, finalChar) {
     alert("currentInput: " + currentInput);
     // prevents entry "s"
-    if (finalChar == "s"){
-        if (currentInput !== "s=" && currentInput !== "s+s"){
-            return;
-        }
+    if (!currentInput.includes("+") && !currentInput.includes("=")){
+        return;
     }
     // either 2 or 3 characters
     var specialChar;
     var sliceLength;
     // filters out irrelevant character combos
-    if (finalChar == "=" && currentInput.length >= 2) {
+    if (finalChar == "=" && currentInput.length >= 3) {
         sliceLength = 2;
     } else if (finalChar !== "=" && currentInput.length >= 3) {
         sliceLength = 3;
@@ -106,7 +104,7 @@ function convertToSpecialChar(inputText, textSlice) {
     if (newSpecialChar !== ""){
         return newSpecialChar;
     } else {
-        return "";
+        return comboSet;
     }
 }
 
