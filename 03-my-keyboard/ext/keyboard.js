@@ -11,11 +11,11 @@ var requiredComboLength = 0;
 //Special Characters [":", "s", "^", "'", "`", "-", "="];
 var specialCharArray = [":", "s", "^", "'", "`", "-", "="];
 var asciiArray = [186, 83, 54, 222, 192, 189, 187];
-//textareaInput and comboBox
-textareaInput = document.getElementById("typingTextbox").value;
-document.getElementById("comboBox").value = textareaInput;
 
 function checkKeyPress() {
+    textareaInput = document.getElementById("typingTextbox").value;
+    document.getElementById("comboBox").value = textareaInput;
+
     // Determines if current key is a special character
     var lastChar = textareaInput.charAt(textareaInput.length - 1);
     keyBoolean = specialCharArray.includes(lastChar, textareaInput);
