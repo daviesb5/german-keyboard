@@ -1,5 +1,45 @@
+body {
+    padding: auto;
+}
+h1, h2 {
+    /* center */
+    text-align: center;
+    border: none;
+}
+.dropdown .dropbtn button {
+    /* center */
+    vertical-align: center;
+}
+div {
+    padding: 0px;
+    margin-top:0.5rem;
+    padding:1.15rem;
+}
+p {
+    font-size:0.9rem;
+    /* center */
+    text-align: center;
+    border: none;
+}
+p.heavy {
+    font-size:1.15rem;
+    font-weight: bold;;
+}
+
 /*
-Dropdown Menu
+==============================
+TEXTBOX & COMBO BOX
+==============================
+*/
+#typingTextbox {
+    font-size: 1.8rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*
+==============================
+DROPDOWN MENU
+==============================
 */
 
 .dropbtn {

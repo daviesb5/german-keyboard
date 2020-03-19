@@ -28,7 +28,7 @@ function checkKeyPress() {
 }
 
 function charConversion(currentInput, finalChar) {
-    alert("currentInput: " + currentInput);
+    // alert("currentInput: " + currentInput);
     // prevents entry "s"
     if (!currentInput.includes("+") && !currentInput.includes("=")){
         return;
@@ -42,7 +42,7 @@ function charConversion(currentInput, finalChar) {
     } else if (finalChar !== "=" && currentInput.length >= 3) {
         sliceLength = 3;
     } else {
-        alert("Too short");
+        // alert("Too short");
     }
     // determines and returns special character
     specialChar = convertToSpecialChar(currentInput, sliceLength);
@@ -55,7 +55,7 @@ function charConversion(currentInput, finalChar) {
 function convertToSpecialChar(inputText, textSlice) {
     // slices the last 2-3 characters from textbox
     var comboSet = inputText.slice(-textSlice);
-    alert("comboSet: " + comboSet);
+    // alert("comboSet: " + comboSet);
 
     // special character array for conversion
     var specialCharArray = [
@@ -92,9 +92,9 @@ function convertToSpecialChar(inputText, textSlice) {
     for (i = 0; i < specialCharArray.length; i++){
         firstRow = specialCharArray[i][0].includes(comboSet);
         newSpecialChar = specialCharArray[i][1];
-        //alert("firstRow: " + firstRow);
+        // alert("firstRow: " + firstRow);
         if (firstRow == true){
-            alert("newSpecialChar: " + newSpecialChar);
+            // alert("newSpecialChar: " + newSpecialChar);
             break;
         } else {
             newSpecialChar = "";
